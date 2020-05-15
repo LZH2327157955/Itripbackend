@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+   http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>
+
+  <!-- BEGIN===配置Spring的ContextLoaderListener监听器，用来启动Spring容器===BEGIN -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <!-- 引入Spring+MyBatis整合配置文件的路径 -->
+    <param-value>classpath:applicationContext-mybatis.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- END===配置ContextLoaderListener监听器，用来启动Spring容器===END -->
+
+  <!-- spring字符编码过滤器start-->
+  <filter>
+    <!--Spring 编码过滤器 -->
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>
+      org.springframework.web.filter.CharacterEncodingFilter
+    </filter-class>
+    <!--编码方式设置为UTF-8  -->
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <!-- ② 过滤器的匹配 URL -->
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- spring字符编码过滤器end-->
+
+  <!--START= 配置Spring的核心控制器，它负责截获所有的请求并将其分派给相应的处理器处理=SATART -->
+  <servlet>
+    <servlet-name>spring</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- 引入SpringMVC配置文件的路径 -->
+      <param-value>classpath:springmvc-servlet.xml</param-value>
+    </init-param>
+    <!--容器在启动的时候就加载此DispatcherServlet-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>spring</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <!--START= 配置Spring的核心控制器，它负责截获所有的请求并将其分派给相应的处理器处理=SATART -->
+
+</web-app>
