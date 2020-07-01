@@ -256,7 +256,7 @@
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
-            <version>1.8.6</version>
+            <version>2.3.2</version>
         </dependency>
         <!-- END ===== Quartz所需要的依赖  ===== END-->
 
