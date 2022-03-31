@@ -196,7 +196,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>5.3.18</version>
             <scope>compile</scope>
         </dependency>
         <!--END =====  Spring4.1.7所需要的所有依赖 ===== END-->
